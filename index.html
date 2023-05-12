@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: sans-serif;
+            background-color: rgb(180, 172, 187);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        input[type="number"],
+        select {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            border: 1px solid black;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            background-color: beige;
+            color: rgb(31, 28, 28);
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: beige;
+        }
+
+        p {
+            font-size: 20px;
+            margin-top: 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <input type="number" id="num1" />
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="/">/</option>
+        <option value=""></option>
+    </select>
+    <input type="number" id="num2">
+    <button onclick="calculate()">calculate</button>
+    <p id="result"></p>
+</body>
+<script>
+    function add(num1, num2) {
+        return num1 + num2;
+    }
+
+    function subtract(num1, num2) {
+        return num1 - num2;
+    }
+
+    function multiply(num1, num2) {
+        return num1 * num2;
+    }
+
+    function divided(num1, num2) {
+        if (num2 === 0) {
+            return "cannot divide by zero";
+        }
+        return num1 / num2;
+    }
+
+    function calculate() {
+        var num1 = parseFloat(document.getElementById("num1").value);
+        var num2 = parseFloat(document.getElementById("num2").value);
+        var operator = document.getElementById("operator").value;
+        var result;
+
+        switch (operator) {
+            case "+":
+                result = add(num1, num2);
+                break;
+            case "-":
+                result = subtract(num1, num2);
+                break;
+            case "*":
+                result = multiply(num1, num2);
+                break;
+            case "/":
+                result = divided(num1, num2);
+                break;
+            default:
+                result = "invalid operator";
+        }
+
+        document.getElementById("result").innerHTML = result;
+
+    }
+</script>
+
+
+</html>
